@@ -1,6 +1,11 @@
+import Banner from "./Banner";
+import Header from "./components/header/Header";
 
 function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (<div className="font-bodyFont m-0 p-0 box-border">
+    <Header />
+    <Banner />
+  </div>)
 }
 
 export default App;
