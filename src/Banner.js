@@ -34,44 +34,44 @@ const Banner = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto ">
-      <Slider {...settings}>
-        <div>
+    <div className="w-11/12 mx-auto">
+      <Slider {...settings}> 
+        <div className="focus:outline-none">
           <img
             className="w-full h-96 rounded-[40px]"
             src="https://www.rentharlow.com/wp-content/uploads/2018/06/Harlow-Hoboken-Apartments-06.jpg"
             alt=""
           />
         </div>
-        <div>
+        <div className="focus:outline-none">
           <img
             className="w-full h-96 rounded-[40px]"
             src="https://www.rentharlow.com/wp-content/uploads/2018/06/Harlow-Hoboken-apartments-08.jpg"
             alt=""
           />
         </div>
-        <div>
+        <div className="focus:outline-none">
           <img
             className="w-full h-96 rounded-[40px]"
             src="https://www.rentharlow.com/wp-content/uploads/2018/09/harlow-09_residences.jpg"
             alt=""
           />
         </div>
-        <div>
+        <div className="focus:outline-none">
           <img
             className="w-full h-96 rounded-[40px]"
             src="https://www.rentharlow.com/wp-content/uploads/2018/05/harlow-10.jpg"
             alt=""
           />
         </div>
-        <div>
+        <div className="focus:outline-none">
           <img
             className="w-full h-96 rounded-[40px]"
             src="https://www.rentharlow.com/wp-content/uploads/2018/09/Harlow_Int_ModelBed_Sept2016_residences.jpg"
             alt=""
           />
         </div>
-        <div>
+        <div className="focus:outline-none">
           <img
             className="w-full h-96 rounded-[40px]"
             src="https://www.rentharlow.com/wp-content/uploads/2018/06/Harlow-Hoboken-Apartments-11.jpg"

@@ -1,12 +1,12 @@
 import React from 'react'
-import BedIcon from '@mui/icons-material/Bed';
+import HomeIcon from '@mui/icons-material/Home';
 import headerTitles from '../../maps';
 
 const Header = () => {
   return (
     <header className='bg-white py-3'>
       <div className='w-4/5 mx-auto px-5 flex justify-between items-center'>
-<h2 className='uppercase font-titleFont font-semibold'><span><BedIcon/> </span> rentrooms</h2>
+<h2 className='uppercase font-titleFont font-semibold'><span><HomeIcon/> </span> rentrooms</h2>
 <div className='flex justify-center items-center gap-10'>
     {
         headerTitles.map(headertitle => (
