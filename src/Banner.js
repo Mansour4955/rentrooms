@@ -24,7 +24,7 @@ function PrevArrow(props) {
 }
 const Banner = () => {
   const settings = {
-    // autoplay: true,
+    autoplay: true,
     speed: 2000,
     infinite: true,
     slidesToShow: 1,
@@ -34,7 +34,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto">
+      <div className="w-11/12 mx-auto">
       <Slider {...settings}> 
         <div className="focus:outline-none">
           <img

@@ -6,8 +6,8 @@ import CategoryIcon from "@mui/icons-material/Category";
 
 const Filtter = () => {
   return (
-      <div className="w-4/6 mx-auto flex shadow-shadowOne rounded-xl bg-transparent">
-        <div className="flex items-center gap-10 w-[75%] justify-around rounded-l-xl py-2">
+      <div className="w-4/6 mx-auto flex shadow-shadowOne rounded-xl bg-transparent -translate-y-2/4">
+        <div className="flex items-center gap-10 w-[75%] justify-around rounded-l-xl py-2 bg-white">
           <div className="flex justify-center gap-y-1  py-3">
           <span className="text-buttonColor">
                 <LocationOnIcon />
