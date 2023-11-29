@@ -24,7 +24,7 @@ function PrevArrow(props) {
 }
 const Banner = () => {
   const settings = {
-    autoplay: true,
+    // autoplay: true,
     speed: 2000,
     infinite: true,
     slidesToShow: 1,
