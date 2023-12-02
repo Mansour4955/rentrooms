@@ -3,27 +3,89 @@ import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { useState } from "react";
+import axios from "axios";
 
 const Register = () => {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [rPassword, setRPassword] = useState("");
+  //////////////////////////////////
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
+  const [errorUsername, setErrorUsername] = useState("");
+  const [errorRPassword, setErrorRPassword] = useState("");
+  ////////////////////////////////////
   const emailHandler = (e) => {
     setEmail(e.target.value);
-  };
-  const usernameHandler = (e) => {
-    setUsername(e.target.value);
+    setErrorEmail("");
   };
   const passwordHandler = (e) => {
     setPassword(e.target.value);
+    setErrorPassword("");
+  };
+  const usernameHandler = (e) => {
+    setUsername(e.target.value);
+    setErrorUsername("");
   };
   const rPasswordHandler = (e) => {
     setRPassword(e.target.value);
+    setErrorRPassword("");
+  };
+  //////////////////////////////////
+  const emailValidation = (email) => {
+    return email.match(/\w+([-]\w+)?@\w+[.]\w{2,}$/);
+  };
+  //////////////////////////////////
+
+  const registerHandler = (e) => {
+    e.preventDefault();
+
+    if (!email) {
+      setErrorEmail("email should not be empty");
+    } else {
+      if (!emailValidation(email)) {
+        setErrorEmail("enter a valid email");
+      }
+    }
+
+    if (!username) {
+      setErrorUsername("username should not be empty");
+    } else if (username.length < 6) {
+      setErrorUsername("username should be at least 6 characters");
+    }
+    if (!password) {
+      setErrorPassword("enter your password");
+    } else if (password.length < 6) {
+      setErrorPassword("password should be at least 6 characters");
+    }
+    if (!rPassword) {
+      setErrorRPassword("confirm your password");
+    } else if (rPassword !== password) {
+      setErrorRPassword("password does not matched");
+    }
+    //////////////////////////
+    if (
+      email &&
+      emailValidation(email) &&
+      username.length >= 6 &&
+      password.length >= 6 &&
+      password === rPassword
+    ) {
+      axios.post("http://localhost:5000/api/users", {
+        email,
+        username,
+        password,
+      });
+      setEmail("");
+      setPassword("");
+      setRPassword("");
+      setUsername("");
+    }
   };
   return (
     <div className="w-10/12 mx-auto py-20">
-      <div className="border-2 border-buttonColor  w-80 mx-auto p-1 rounded-xl">
+      <div className="border-2 border-buttonColor  w-80 mx-auto p-1 rounded-xl shadow-shadowOne shadow-buttonColor">
         <div className=" flex items-center justify-center my-4">
           <Link to="/">
             <h2 className="uppercase font-titleFont font-semibold ">
@@ -42,13 +104,19 @@ const Register = () => {
                 Email :
               </label>
               <input
-                className="border border-buttonColor outline-none py-1 px-2 caret-buttonColor rounded-md"
+                className="border border-buttonColor outline-none py-1 px-2 caret-buttonColor rounded-md lowercase"
                 type="email"
                 placeholder="enter email"
                 id="email"
                 value={email}
                 onChange={emailHandler}
               />
+              {errorEmail && (
+                <p className="text-red-600 text-sm mx-2 font-semibold">
+                  <span className="italic">! </span>
+                  {errorEmail}
+                </p>
+              )}
             </div>
             <div className="flex flex-col ">
               <label className="pl-1" htmlFor="username">
@@ -62,6 +130,12 @@ const Register = () => {
                 value={username}
                 onChange={usernameHandler}
               />
+              {errorUsername && (
+                <p className="text-red-600 text-sm mx-2 font-semibold">
+                  <span className="italic">! </span>
+                  {errorUsername}
+                </p>
+              )}
             </div>
             <div className="flex flex-col ">
               <label className="pl-1" htmlFor="password">
@@ -75,6 +149,12 @@ const Register = () => {
                 value={password}
                 onChange={passwordHandler}
               />
+              {errorPassword && (
+                <p className="text-red-600 text-sm mx-2 font-semibold">
+                  <span className="italic">! </span>
+                  {errorPassword}
+                </p>
+              )}
             </div>
             <div className="flex flex-col ">
               <label className="pl-1" htmlFor="re-password">
@@ -88,14 +168,21 @@ const Register = () => {
                 value={rPassword}
                 onChange={rPasswordHandler}
               />
+              {errorRPassword && (
+                <p className="text-red-600 text-sm mx-2 font-semibold">
+                  <span className="italic">! </span>
+                  {errorRPassword}
+                </p>
+              )}
             </div>
           </form>
         </div>
         <div className="py-2 mx-auto ">
           <button
+            onClick={registerHandler}
             type="submit"
             className="flex items-center justify-center  w-full rounded-md p-1 text-white text-lg font-semibold duration-500 bg-gradient-to-tr from-buttonColor to-orange-600 active:bg-gradient-to-bl">
-            Submit
+            Continue
           </button>
           <div className="mx-2 flex justify-center">
             <p className="text-gray-600 text-xs mt-1 ">
