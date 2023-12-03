@@ -5,6 +5,7 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { useState } from "react";
 import axios from "axios";
 import { RotatingLines } from "react-loader-spinner";
+import { motion } from "framer-motion";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const Register = () => {
   const emailHandler = (e) => {
     setEmail(e.target.value);
     setErrorEmail("");
+    setLoading(false);
   };
   const passwordHandler = (e) => {
     setPassword(e.target.value);
@@ -44,7 +46,7 @@ const Register = () => {
   };
   //////////////////////////////////
 
-  const registerHandler = (e) => {
+  async function registerHandler(e) {
     e.preventDefault();
 
     if (!email) {
@@ -79,25 +81,31 @@ const Register = () => {
       password === rPassword
     ) {
       setLoading(true);
-      axios
-        .post("http://localhost:5000/api/auth/register", {
+      try {
+        await axios.post("http://localhost:5000/api/auth/register", {
           email,
           username,
           password,
-        })
-        .then((res) => "")
-        .catch((err) => setErrorEmail(err.response.data.message));
-      // setEmail("");
-      // setPassword("");
-      // setRPassword("");
-      // setUsername("");
-      setLoading(false);
-      setSuccessMsg("Account Created Successfully!");
-      // setTimeout(() => {
-      //   navigate("/login");
-      // }, 3000);
+        });
+        setTimeout(() => {
+          setLoading(false);
+          setSuccessMsg("Account Created Successfully!");
+          // setEmail("");
+          // setPassword("");
+          // setRPassword("");
+          // setUsername("");
+        }, 1000);
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
+      } catch (err) {
+        setErrorEmail(err.response.data.message);
+        setLoading(false)
+      }
+
+      
     }
-  };
+  }
   return (
     <div className="w-10/12 mx-auto py-20">
       <div className="border-2 border-buttonColor  w-80 mx-auto p-1 rounded-xl shadow-shadowOne shadow-buttonColor">
@@ -210,15 +218,19 @@ const Register = () => {
                   visible={true}
                 />
               </p>
-              </div>
-            )}
-            {
-              successMsg && (
-                <div className=" flex justify-center">
-                <p className="bg-green-600 w-full p-1 mt-1 text-white flex justify-center font-semibold rounded-md">{successMsg}</p>
-                </div>
-              )
-            }
+            </div>
+          )}
+          {successMsg && (
+            <div className=" flex justify-center">
+              <motion.p
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="bg-green-600 w-full p-1 mt-1 text-white flex justify-center font-semibold rounded-md">
+                {successMsg}
+              </motion.p>
+            </div>
+          )}
           <div className="mx-2 flex justify-center">
             <p className="text-gray-600 text-xs mt-1 ">
               if you're already registered click on
