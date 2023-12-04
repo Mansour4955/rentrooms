@@ -16,6 +16,9 @@ const Card = () => {
       .then((res) => setCards(res.data))
       .catch((err) => console.log(err.message));
   }, [filtter.clickButton]); 
+  async function deleteCard(e){
+await axios.delete(`http://localhost:5000/api/cards/${e}`)
+  }
   return (
     <div className="w-10/12 mx-auto flex flex-col items-center gap-11 mb-10">
       <h3 className="text-buttonColor font-semibold text-2xl">
@@ -43,6 +46,10 @@ const Card = () => {
               </p>
             </div>
             <p className="px-1 text-sm mt-1 text-gray-400">{card.desc}</p>
+            <div className="flex justify-between items-center mx-2 mt-1">
+              <button onClick={()=> deleteCard(card._id)} className="bg-red-500 rounded-lg px-2 text-white font-medium">Delete</button>
+              <button className="bg-green-600 rounded-lg px-2 text-white font-medium">Edit</button>
+            </div>
           </div>
         ))}
       </div>

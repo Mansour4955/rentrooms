@@ -34,46 +34,46 @@ const Banner = () => {
   };
 
   return (
-      <div className="w-11/12 mx-auto">
+      <div className="w-11/12 mx-auto z-10">
       <Slider {...settings}> 
-        <div className="focus:outline-none">
+        <div className="focus:outline-none z-10">
           <img
-            className="w-full h-96 rounded-[40px]"
+            className="w-full h-96 rounded-[10px] z-10"
             src="https://www.rentharlow.com/wp-content/uploads/2018/06/Harlow-Hoboken-Apartments-06.jpg"
             alt=""
           />
         </div>
-        <div className="focus:outline-none">
+        <div className="focus:outline-none z-10">
           <img
-            className="w-full h-96 rounded-[40px]"
+            className="w-full h-96 rounded-[10px] z-10"
             src="https://www.rentharlow.com/wp-content/uploads/2018/06/Harlow-Hoboken-apartments-08.jpg"
             alt=""
           />
         </div>
-        <div className="focus:outline-none">
+        <div className="focus:outline-none z-10">
           <img
-            className="w-full h-96 rounded-[40px]"
+            className="w-full h-96 rounded-[10px] z-10"
             src="https://www.rentharlow.com/wp-content/uploads/2018/09/harlow-09_residences.jpg"
             alt=""
           />
         </div>
-        <div className="focus:outline-none">
+        <div className="focus:outline-none z-10">
           <img
-            className="w-full h-96 rounded-[40px]"
+            className="w-full h-96 rounded-[10px] z-10"
             src="https://www.rentharlow.com/wp-content/uploads/2018/05/harlow-10.jpg"
             alt=""
           />
         </div>
-        <div className="focus:outline-none">
+        <div className="focus:outline-none ">
           <img
-            className="w-full h-96 rounded-[40px]"
+            className="w-full h-96 rounded-[10px] "
             src="https://www.rentharlow.com/wp-content/uploads/2018/09/Harlow_Int_ModelBed_Sept2016_residences.jpg"
             alt=""
           />
         </div>
-        <div className="focus:outline-none">
+        <div className="focus:outline-none ">
           <img
-            className="w-full h-96 rounded-[40px]"
+            className="w-full h-96 rounded-[10px] "
             src="https://www.rentharlow.com/wp-content/uploads/2018/06/Harlow-Hoboken-Apartments-11.jpg"
             alt=""
           />

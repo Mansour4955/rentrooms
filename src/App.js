@@ -8,6 +8,8 @@ import Pricing from "./headerContent/Pricing";
 import ContactUs from "./headerContent/ContactUs";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
+import PostCategory from "./PostCategory";
+import MyAccount from "./MyAccount";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/contactUs" element={<ContactUs />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/post" element={<PostCategory />} />
+          <Route path="/myaccount" element={<MyAccount />} />
         </Routes>
         <Footer />
       </BrowserRouter>

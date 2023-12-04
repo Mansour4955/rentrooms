@@ -5,14 +5,11 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { RotatingLines } from "react-loader-spinner";
 import { motion } from "framer-motion";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUserInfo } from "../redux/userSlice";
 
 const Login = () => {
   ///////////////
-  const user = useSelector((state) => state.theUser.userInfo);
-  console.log(user);
-  ////////////////
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
